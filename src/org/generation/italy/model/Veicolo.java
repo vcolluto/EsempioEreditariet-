@@ -1,13 +1,31 @@
 package org.generation.italy.model;
 
 public class Veicolo {					//superclasse
-	public String targa, marca, modello;		//private: sono visibili solo in Veicolo
-	public int cilindrata;						//private: sono visibili solo in Veicolo
-	
-	
-	
-	
-	
+	private String targa, marca, modello;		//private: sono visibili solo in Veicolo
+	private int cilindrata;						//private: sono visibili solo in Veicolo
+
+	public Veicolo(String targa, String marca, String modello, int cilindrata) throws Exception {
+		super();	//chiamo il costruttore di Object (la classe "padre di tutti")
+		if (!targa.isBlank() && targa.length()>7)
+			this.targa = targa;
+		else
+			throw new Exception("Targa non valida");
+		
+		if (!marca.isBlank())
+			this.marca = marca;
+		else
+			throw new Exception("Marca non valida");
+		
+		if (!modello.isBlank())
+			this.modello = modello;
+		else
+			throw new Exception("Modello non valido");
+		
+		if (cilindrata>0)
+			this.cilindrata = cilindrata;
+		else
+			throw new Exception("Cilindrata non valida");
+	}
 
 	public void accendi() {
 		System.out.println("acceso");
