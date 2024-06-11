@@ -1,5 +1,7 @@
 package org.generation.italy;
 
+
+
 import org.generation.italy.model.Automobile;
 import org.generation.italy.model.Motocicletta;
 import org.generation.italy.model.Veicolo;
@@ -12,11 +14,18 @@ public class Main {
 		try {
 			Veicolo v=new Veicolo("EF434323","Opel", "Astra",1700);	//superclasse (Veicolo generico)						
 			v.accendi();
-			v.accelera();
+			v.accelera();		//accelera di 1 km/h
+			System.out.println("Adesso la velocità è: "+v.getVelocità());
+			v.accelera(10);		//accelera di 10 km/h
+			System.out.println("Adesso la velocità è: "+v.getVelocità());
+			v.accelera("poco");
+			System.out.println("Adesso la velocità è: "+v.getVelocità());
+			v.accelera("abbastanza");
+			System.out.println("Adesso la velocità è: "+v.getVelocità());
 			v.decelera();			
 			
-			
-			Veicolo t=new Veicolo("DE455643","Lamborghini", "8280 TTV", 2000);	//superclasse (Veicolo generico)			
+		
+			Veicolo t=new Veicolo("DE455643","Lamborghini", "8280 TTV");	//superclasse (Veicolo generico). La cilindrata è quella di default (1000) 			
 			t.accendi();
 			t.accelera();		
 			

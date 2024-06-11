@@ -3,6 +3,7 @@ package org.generation.italy.model;
 public class Veicolo {					//superclasse
 	private String targa, marca, modello;		//private: sono visibili solo in Veicolo
 	private int cilindrata;						//private: sono visibili solo in Veicolo
+	private int velocità;
 
 	public Veicolo(String targa, String marca, String modello, int cilindrata) throws Exception {
 		super();	//chiamo il costruttore di Object (la classe "padre di tutti")
@@ -25,6 +26,11 @@ public class Veicolo {					//superclasse
 			this.cilindrata = cilindrata;
 		else
 			throw new Exception("Cilindrata non valida");
+		velocità=0;
+	}
+	
+	public Veicolo(String targa, String marca, String modello) throws Exception {
+		this(targa, marca, modello, 1000);		//chiamo la versione del costruttore con 4 parametri, impostando il valore di cindrata di default (1000)
 	}
 
 	public void accendi() {
@@ -36,13 +42,33 @@ public class Veicolo {					//superclasse
 	}
 	
 	public void accelera() {
+		if (velocità<250)
+			velocità++;		//accelero di 1 km/h
 		System.out.println("sto accelerando");
 	}
 	
 	public void decelera() {
+		if (velocità>0)
+			velocità--;		//decelero di 1 km/h
 		System.out.println("sto decelerando");
 	}
+	
+	public void accelera(int n) {						//metodo in "overloading"
+		if (velocità<250-n)
+			velocità+=n;		//accelero di n km/h
+		System.out.println("sto accelerando");
+	}
 
+	public void accelera(String quanto) {				//metodo in "overloading"
+		if (quanto.equals("poco"))
+			velocità+=2;		//accelero di 2 km/h
+		else if (quanto.equals("abbastanza"))
+			velocità+=5;		//accelero di 2 km/h
+		else if (quanto.equals("molto"))
+			velocità+=15;		//accelero di 2 km/h
+		System.out.println("sto accelerando");
+	}
+	
 	public String getTarga() {
 		return targa;
 	}
@@ -62,6 +88,10 @@ public class Veicolo {					//superclasse
 
 	public int getCilindrata() {
 		return cilindrata;
+	}
+
+	public int getVelocità() {
+		return velocità;
 	}
 
 	
